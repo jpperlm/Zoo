@@ -17,15 +17,12 @@ class Zoo
     @animals.each_with_index do |animal, index|
       puts "#{index+1}) #{animal.introduction()}"
     end
-    puts "Type exit to leave"
+    puts "Enter `exit` to leave"
     selection = 0
     while selection == 0 || selection > @animals.length 
       print "Enter your selection by number: "
       selection = gets.strip().chomp()
-      if (selection == 'exit')
-        puts('Leaving the Zoo!')
-        return 0
-      end
+      return 0 if (selection == 'exit')
       selection = selection.to_i
     end
     return selection
@@ -42,7 +39,15 @@ class Zoo
     animal = @animals[ind-1]
     animal.action()
   end
+
   def addAnimal(animal)
     @animals.push(animal)
+  end
+
+  def leave()
+    puts "-------------------------------"
+    puts "Thanks for visting the zoo."
+    puts "We hope you enjoyed your stay!"
+    puts "-------------------------------"
   end
 end

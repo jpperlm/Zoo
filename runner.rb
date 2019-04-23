@@ -5,7 +5,7 @@ require_relative './birds/Penguin'
 require_relative './birds/Condor'
 require_relative './seeds'
 require 'io/console' 
-                                                                                                      
+
 def pause()
   puts "Press any key to continue!"                                                                                                    
   STDIN.getch
@@ -41,3 +41,4 @@ while (selection)
   bronx_zoo.animalAction(selection)
   pause()
 end
+bronx_zoo.leave()
