@@ -28,7 +28,9 @@ class Zoo
         puts "That doesn't seem to be enough money..."
       end
     end
-    puts "Your change is $#{payment - cost}."
+    change = payment - cost
+    roundedChange = change.round(2)
+    puts "Your change is $#{(roundedChange)}."
     puts "Enjoy the Zoo!"
     return 1
   end
