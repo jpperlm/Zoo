@@ -7,7 +7,7 @@ require_relative './seeds'
 require 'io/console' 
 
 def pause()
-  puts "Press any key to continue!"                                                                                                    
+  print "Press any key to continue!"                                                                                                    
   STDIN.getch
   puts ""
 end
@@ -30,15 +30,22 @@ allAnimals.each do |animal|
   bronx_zoo.addAnimal(animal)
 end
 
+puts "\e[H\e[2J"
 bronx_zoo.welcome()
 pause()
-selection = 1
-while (selection)
-  selection = bronx_zoo.mapSelect()
-  break if (selection == 0)
-  bronx_zoo.viewAnimal(selection)
+allow = bronx_zoo.buyTickets()
+if (allow != 0) 
   pause()
-  bronx_zoo.animalAction(selection)
-  pause()
+  selection = 1
+  while (selection)
+    puts "\e[H\e[2J"
+    selection = bronx_zoo.mapSelect()
+    break if (selection == 0)
+    bronx_zoo.viewAnimal(selection)
+    pause()
+    bronx_zoo.animalAction(selection)
+    pause()
+  end
+  puts "\e[H\e[2J"
+  bronx_zoo.leave()
 end
-bronx_zoo.leave()

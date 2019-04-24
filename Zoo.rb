@@ -11,6 +11,30 @@ class Zoo
     puts "Welcome to the #{@name} Zoo! Located in #{@city}, #{@state}"
   end
 
+  def buyTickets()
+    print "How many members are in your party? "
+    selection = gets.to_i
+    if (selection <= 0)
+      puts "Invalid Entry - Goodbye"
+      leave()
+      return 0
+    end
+    payment = 0
+    cost = selection*20.0
+    while payment < cost
+      print "That will be $#{cost}, please enter payment amount: "
+      payment = gets.gsub(/[$,]/,'').to_f
+      if (payment < cost)
+        puts "That doesn't seem to be enough money..."
+      end
+    end
+    puts "Your change is $#{payment - cost}."
+    puts "Enjoy the Zoo!"
+    return 1
+  end
+
+
+
   def mapSelect()
     puts "There are #{@animals.length} animals currently at the zoo!"
     puts "Who would you like to see next?"
